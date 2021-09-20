@@ -1,3 +1,6 @@
+from typing import runtime_checkable
+
+
 def init_board():
     """Returns an empty 3-by-3 board (with .)."""
     board = []
@@ -59,3 +62,26 @@ def main_menu():
 
 if __name__ == '__main__':
     main_menu()
+
+
+def main_menu():
+
+
+def init_board():
+
+
+def print_board(board):
+
+
+def tictactoe_game(mode='HUMAN-HUMAN'):
+    player mowe
+    prawidłowy input
+    u can`t input here!
+    prawidwołe coordynate
+    if true mark if false not mark or quit
+    print mark on the board
+    in row
+    czy mozna zrobić jesze 1 ruch
+    true == enother player mowe
+    false == end game
+    czy ktoś wygrał
