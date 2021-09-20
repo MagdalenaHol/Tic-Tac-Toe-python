@@ -85,3 +85,67 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
     true == enother player mowe
     false == end game
     czy ktoś wygrał
+
+1. def main_menu
+2. Zaimplementować tablice init_board() 
+    TTT = [["."]*3,["."]*3,["."]*3]
+3. def whose_move()
+    random.choice(move)
+4. def print_board(board)
+        board pojawia się przed każdym ruchem
+5. Zaimplementować listę prawidłowych ruchów
+6. def tictactoe_game():
+        def get_move()
+        - player X start the game
+        - player move (ruch każdego gracza jest przechowywany)
+        - player input (użyć try gdyby gracz wprowadził nieprawidłową wartość + ValueError by kontynuować,
+                        walidacja czy prawidłowa pozycja gracza jest już zajęta)
+        - jakiś update które miejsce na boardzie zajmuje player??
+        def mark()
+            - input playera ( mark "X" or "O")
+        def get_ai_move()
+
+7. def has_won() sprawdzić czy ktoś wygrał 
+        True or False:
+        horizontal row winner
+        vertical row winner
+        diagonal row winner
+8. def is_full()
+9. def print_result()
+        -Congratulation! for the winner
+        -if moves == 9
+        print("Tie!")
+
+
+
+
+1. def main_menu
+2. Zaimplementować tablice init_board() 
+    TTT = [["."]*3,["."]*3,["."]*3]
+3. def whose_move()
+    random.choice(move)
+4. def print_board(board)
+        board pojawia się przed każdym ruchem
+5. Zaimplementować listę prawidłowych ruchów
+6. def tictactoe_game():
+        def get_move()
+        - player X start the game
+        - player move (ruch każdego gracza jest przechowywany)
+        - player input (użyć try gdyby gracz wprowadził nieprawidłową wartość + ValueError by kontynuować,
+                        walidacja czy prawidłowa pozycja gracza jest już zajęta)
+        - jakiś update które miejsce na boardzie zajmuje player??
+        def mark()
+            - input playera ( mark "X" or "O")
+        def get_ai_move()
+            
+7. def has_won() sprawdzić czy ktoś wygrał 
+        True or False:
+        horizontal row winner
+        vertical row winner
+        diagonal row winner
+8. def is_full()
+9. def print_result()
+        -Congratulation! for the winner
+        -if moves == 9
+        print("Tie!")
+
