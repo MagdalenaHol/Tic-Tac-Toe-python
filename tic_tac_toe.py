@@ -1,7 +1,11 @@
 from typing import runtime_checkable
+import random
 
-COORDINATES = {"A":0, "B": 1, "C": 2}
+
+COORDINATES = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
+COORDINATES_DICT = {"A":0, "B": 1, "C": 2}
 USED_COORDINATES = []
+
 
 
 def init_board():  
@@ -15,27 +19,30 @@ def quit_game(user_input):
         exit()
 
 
-def validation_coordinate(USED_COORDINATES):
+def validation_coordinate(USED_COORDINATES, COORDINATES):
     while 1:
-        user_input = input("Get your coordinate: " ).upper()
+        user_input = (input("Get your coordinate: ")).upper()
         quit_game(user_input)
         if user_input in COORDINATES and user_input not in USED_COORDINATES:
             USED_COORDINATES.append(user_input)
+            COORDINATES.remove(user_input)
             return user_input
         else:
             print("It's not valid coordinate, please try again")
 
-def get_move(board, player, USED_COORDINATES):
-    user_input = validation_coordinate(USED_COORDINATES)
-    coordinate_dictionary = {"A":0, "B":1, "C":2}
-    row, col = 0, 0
-    return row, col
+def get_move(USED_COORDINATES, COORDINATES):
+    user_input = validation_coordinate(USED_COORDINATES,COORDINATES)
+    row = int(COORDINATES_DICT[user_input[0]])
+    col = int(user_input[1])
+    return row, col-1
 
 
-def get_ai_move(board, player):  # Bartek
-    """Returns the coordinates of a valid move for player on board."""
-    row, col = 0, 0
-    return row, col
+def get_ai_move(COORDINATES):
+    bot_move = random.choice(COORDINATES)
+    COORDINATES.remove(bot_move)
+    row = int(COORDINATES_DICT[bot_move[0]])
+    col = int(bot_move[1])
+    return row, col-1
 
 
 def mark(board, player, row, col):  # Magda
