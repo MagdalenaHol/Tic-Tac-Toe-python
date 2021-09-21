@@ -151,3 +151,24 @@ True or False:
 -Congratulation! for the winner
 -if moves == 9
 print("Tie!")
+
+
+--------------------------
+#1. wyświetlanie menu
+#2. menu_user_input (1,2,3)
+#3. walidacja inputu 2. -> sprawdzenie czy wpisano 1,2,3 -> error i prośba o ponowny input (return 1,2,3,)
+#4. create board return lista + print board
+#5. prośba o koordynaty + user_coordinate_input 
+#6. walidacja user_input - gdy nieprawidłowy input lub zajęte pole - prośba o ponowny coordinate_input x = return = [0[0]]
+#7. zamiana elementu "." w liście na X, 0
+"""TTT = ["X",".","."]
+TTT = [1["."|"."|"."], 
+         ___|___|___
+       2["."|"."|"."], 
+         ___|___|___
+       3["."|"."|"."]]"""
+       
+#8. print listy
+#9. walidacja wygranej return True, False
+#10. walidacja remisu (czy jest miejsce na planszy) return True, False
+#11. ruch drugiego gracza 5-10
