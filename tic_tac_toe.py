@@ -1,14 +1,33 @@
 from typing import runtime_checkable
 
+COORDINATES = {"A":0, "B": 1, "C": 2}
+USED_COORDINATES = []
 
-def init_board():  # Bartek
-    """Returns an empty 3-by-3 board (with .)."""
-    board = []
+
+def init_board():  
+    board = [[".", ".", "."], [".", ".", "."], [".", ".", "."]]
     return board
 
 
-def get_move(board, player):  # Bartek
-    """Returns the coordinates of a valid move for player on board."""
+def quit_game(user_input):
+    if user_input == "QUIT":
+        print("Goodbye")
+        exit()
+
+
+def validation_coordinate(USED_COORDINATES):
+    while 1:
+        user_input = input("Get your coordinate: " ).upper()
+        quit_game(user_input)
+        if user_input in COORDINATES and user_input not in USED_COORDINATES:
+            USED_COORDINATES.append(user_input)
+            return user_input
+        else:
+            print("It's not valid coordinate, please try again")
+
+def get_move(board, player, USED_COORDINATES):
+    user_input = validation_coordinate(USED_COORDINATES)
+    coordinate_dictionary = {"A":0, "B":1, "C":2}
     row, col = 0, 0
     return row, col
 
@@ -74,7 +93,8 @@ def print_board(board):
 
 
 def tictactoe_game(mode='HUMAN-HUMAN'):
-    player mowe
+    pass
+"""    player mowe
     prawidłowy input
     u can`t input here!
     prawidwołe coordynate
@@ -85,8 +105,6 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
     true == enother player mowe
     false == end game
     czy ktoś wygrał
-
-
 1. def main_menu
 2. Zaimplementować tablice init_board()
 TTT = [["."]*3, ["."]*3, ["."]*3]
@@ -153,7 +171,8 @@ True or False:
 print("Tie!")
 
 
---------------------------
+--------------------------"""
+
 #1. wyświetlanie menu
 #2. menu_user_input (1,2,3)
 #3. walidacja inputu 2. -> sprawdzenie czy wpisano 1,2,3 -> error i prośba o ponowny input (return 1,2,3,)
