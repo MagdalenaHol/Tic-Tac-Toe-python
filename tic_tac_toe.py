@@ -3,9 +3,8 @@ import random
 
 
 COORDINATES = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
-COORDINATES_DICT = {"A":0, "B": 1, "C": 2}
+COORDINATES_DICT = {"A": 0, "B": 1, "C": 2}
 USED_COORDINATES = []
-
 
 
 def init_board():  
@@ -30,8 +29,9 @@ def validation_coordinate(USED_COORDINATES, COORDINATES):
         else:
             print("It's not valid coordinate, please try again")
 
+
 def get_move(USED_COORDINATES, COORDINATES):
-    user_input = validation_coordinate(USED_COORDINATES,COORDINATES)
+    user_input = validation_coordinate(USED_COORDINATES, COORDINATES)
     row = int(COORDINATES_DICT[user_input[0]])
     col = int(user_input[1])
     return row, col-1
@@ -45,19 +45,94 @@ def get_ai_move(COORDINATES):
     return row, col-1
 
 
-def mark(board, player, row, col):  # Magda
-    """Marks the element at row & col on the board for player."""
-    pass
+
+#--------------------------------
+# board = [[".", ".", "."], 
+#          [".", ".", "."], 
+#          [".", ".", "."]] 
 
 
-def has_won(board, player):  # Magda
-    """Returns True if player has won the game."""
+# print(board) 
+# print()
+
+
+# player = "0"
+# x = 0
+# y = 2
+
+
+def mark(board, player, row, col):
+    if row not in [0, 1, 2]:
+        print("Row out- of bound")
+        return board
+    if col not in [0, 1, 2]:
+        print("Col out- of bound")
+        return board
+
+    if board[row][col] != ".":
+        print("It's occupied.")
+        return board
+
+    board[row][col] = player
+    return board 
+    
+    
+# board = mark(board, player, x, y)
+
+
+# player = "X"
+# x = 2
+# y = 1
+
+# board = mark(board, player, 1, 1)
+# board = mark(board, player, 1, 1)
+# print(board)
+
+
+def is_full(board):  
+    for el_in_main_board in board:
+        for el_in_inner_board in el_in_main_board:
+            if el_in_inner_board == ".":
+                return False
+            
+    return True
+    
+
+# board = [["x", "o", "o"], 
+#          [".", "x", "."], 
+#          ["o", ".", "x"]] 
+
+# print(is_full(board))
+
+
+def has_won(board, player): 
+    
+    if player == board[0][0] and player == board[0][1] and player == board[0][2]:
+        return "Won player: ", player
+    if player == board[0][0] and player == board[1][0] and player == board[2][0]:
+        return "Won player: ", player
+    if player == board[0][0] and player == board[1][1] and player == board[2][2]:
+        return "Won player: ", player
+    if player == board[0][1] and player == board[1][1] and player == board[2][1]:
+        return "Won player: ", player
+    if player == board[0][2] and player == board[1][2] and player == board[2][2]:
+        return "Won player: ", player
+    if player == board[0][2] and player == board[1][1] and player == board[2][0]:
+        return "Won player: ", player
+    if player == board[1][0] and player == board[1][1] and player == board[1][2]:
+        return "Won player: ", player
+    if player == board[2][0] and player == board[2][1] and player == board[2][2]:
+        return "Won player: ", player
+    
     return False
 
 
-def is_full(board):  # Magda
-    """Returns True if board is full."""
-    return False
+# print(has_won(board, "o"))
+# print(has_won(board, "x"))
+
+
+
+
 
 
 def print_board(board):
@@ -88,6 +163,14 @@ def main_menu():  # Denys
 
 if __name__ == '__main__':
     main_menu()
+
+
+
+
+
+
+
+
 
 
 def main_menu():
