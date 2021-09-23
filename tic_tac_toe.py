@@ -1,5 +1,6 @@
 from typing import runtime_checkable
 import random
+current_player = "x"
 
 
 COORDINATES = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
@@ -119,14 +120,16 @@ def print_result(board, player):
 
 
 def tictactoe_game(board, player):
+    current_player
     while True:
-        init_board()
+        print_board()
         get_move()
         mark()
         if has_won == True:
             break
         elif is_full() == True:
             break
+        change_player()
     print(has_won(board, player))
 
 
@@ -154,5 +157,6 @@ def main_menu():
 
 
 if __name__ == '__main__':
-
-    main_menu()
+    game_mode = main_menu()
+    board = init_board()
+    tictactoe_game(board)
