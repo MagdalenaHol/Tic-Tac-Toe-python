@@ -83,23 +83,21 @@ def is_full(board):
 def has_won(board, player):
 
     if player == board[0][0] and player == board[0][1] and player == board[0][2]:
-        return "Won player: ", player
+        return True
     if player == board[0][0] and player == board[1][0] and player == board[2][0]:
-        return "Won player: ", player
+        return True
     if player == board[0][0] and player == board[1][1] and player == board[2][2]:
-        return "Won player: ", player
+        return True
     if player == board[0][1] and player == board[1][1] and player == board[2][1]:
-        return "Won player: ", player
+        return True
     if player == board[0][2] and player == board[1][2] and player == board[2][2]:
-        return "Won player: ", player
+        return True
     if player == board[0][2] and player == board[1][1] and player == board[2][0]:
-        return "Won player: ", player
+        return True
     if player == board[1][0] and player == board[1][1] and player == board[1][2]:
-        return "Won player: ", player
+        return True
     if player == board[2][0] and player == board[2][1] and player == board[2][2]:
-        return "Won player: ", player
-
-    return False
+        return True
 
 
 def print_board(board):
@@ -121,12 +119,33 @@ def tictactoe_game(board, player, used_coordinates, coordinates):
         col, row = get_move(used_coordinates, coordinates)
         print(str(col), ' ', str(row))
         board = mark(board, player, row, col)
+        board_full = is_full(board)
         if has_won(board, player) == True:
-            return has_won()
-        elif is_full(board) == True:
+            print(f"Won Player: ", player)
+            break
+        elif board_full == True:
+            print("It`s a Tie!")
             break
         player = change_player(player)
-    print(print_result(board, player))
+
+
+def tictactoe_game_vs_computer(board, player, random, used_coordinates, coordinates):
+    while True:
+        print_board(board)
+        if player == 'x':
+            col, row = get_ai_move(used_coordinates, coordinates)
+        elif player == 'o':
+            col, row = get_move(used_coordinates, coordinates)
+        print(str(col), ' ', str(row))
+        board = mark(board, player, row, col)
+        board_full = is_full(board)
+        if has_won(board, player) == True:
+            print(f"Won Player: ", player)
+            break
+        elif board_full == True:
+            print("It`s a Tie!")
+            break
+        player = change_player(player)
 
 
 def menu_valiadation():
@@ -139,6 +158,14 @@ def menu_valiadation():
                 return numbers
         except ValueError:
             print("Are you stupid? Pick 1,2 or 3 if you are not stupid!!!")
+
+
+def options(game_mode):
+    if game_mode == 1:
+        tictactoe_game(board, player, used_coordinates, coordinates)
+    if game_mode == 2:
+        tictactoe_game_vs_computer(
+            board, player, random, used_coordinates, coordinates)
 
 
 def main_menu():
@@ -157,4 +184,4 @@ if __name__ == '__main__':
     board = init_board()
     used_coordinates = []
     coordinates = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
-    tictactoe_game(board, player, used_coordinates, coordinates)
+    options(game_mode)
