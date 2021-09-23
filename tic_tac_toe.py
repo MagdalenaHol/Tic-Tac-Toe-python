@@ -54,6 +54,17 @@ def get_ai_move(COORDINATES):
 get_ai_move(COORDINATES)
 
 #--------------------------------
+current_player = "x"
+
+
+def change_player():
+    if current_player  == "x":
+        current_player = "o"
+    if current_player == "o":
+        current_player = "x"
+    return current_player 
+
+    
 # board = [[".", ".", "."], 
 #          [".", ".", "."], 
 #          [".", ".", "."]] 
