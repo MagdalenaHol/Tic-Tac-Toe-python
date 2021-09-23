@@ -114,38 +114,44 @@ def print_result(board, player):
 
 
 def tictactoe_game(board, player, used_coordinates, coordinates):
+    print_board(board)
     while True:
-        print_board(board)
         col, row = get_move(used_coordinates, coordinates)
         print(str(col), ' ', str(row))
         board = mark(board, player, row, col)
         board_full = is_full(board)
         if has_won(board, player) == True:
+            print_board(board)
             print(f"Won Player: ", player)
             break
         elif board_full == True:
+            print_board(board)
             print("It`s a Tie!")
             break
         player = change_player(player)
+        print_board(board)
 
 
 def tictactoe_game_vs_computer(board, player, random, used_coordinates, coordinates):
+    print_board(board)
     while True:
-        print_board(board)
         if player == 'x':
-            col, row = get_ai_move(used_coordinates, coordinates)
+            col, row = get_ai_move(coordinates)
         elif player == 'o':
             col, row = get_move(used_coordinates, coordinates)
         print(str(col), ' ', str(row))
         board = mark(board, player, row, col)
         board_full = is_full(board)
         if has_won(board, player) == True:
+            print_board(board)
             print(f"Won Player: ", player)
             break
         elif board_full == True:
+            print_board(board)
             print("It`s a Tie!")
             break
         player = change_player(player)
+        print_board(board)
 
 
 def menu_valiadation():
@@ -176,12 +182,18 @@ def main_menu():
     2. Player vs Computer
     3. Computer vs Computer
     Type "QUIT" to exit''')
-    menu_valiadation()
+    number = menu_valiadation()
+    return number
 
 
 if __name__ == '__main__':
-    game_mode = main_menu()
-    board = init_board()
-    used_coordinates = []
-    coordinates = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
-    options(game_mode)
+    while True:
+        game_mode = main_menu()
+        board = init_board()
+        used_coordinates = []
+        coordinates = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
+        options(game_mode)
+        print_board(board)
+        answer = input("Do you want play again? Type 'n' if you wan`t! ")
+        if answer.upper() == 'N':
+            break
