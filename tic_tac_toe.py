@@ -44,7 +44,7 @@ def get_ai_move(COORDINATES):
     col = int(bot_move[1])
     return row, col-1
 
-
+get_ai_move(COORDINATES)
 
 #--------------------------------
 # board = [[".", ".", "."], 
@@ -174,16 +174,8 @@ if __name__ == '__main__':
 
 
 def main_menu():
-
-
-def init_board():
-
-
-def print_board(board):
-
-
-def tictactoe_game(mode='HUMAN-HUMAN'):
     pass
+
 """    player mowe
     prawidłowy input
     u can`t input here!
