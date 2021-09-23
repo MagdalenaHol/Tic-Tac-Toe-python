@@ -3,9 +3,9 @@ import random
 player = "x"
 
 
-COORDINATES = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
-COORDINATES_DICT = {"A": 0, "B": 1, "C": 2}
-USED_COORDINATES = []
+#COORDINATES = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
+coordinates_dict = {"A": 0, "B": 1, "C": 2}
+#USED_COORDINATES = []
 
 
 def init_board():
@@ -19,44 +19,40 @@ def quit_game(user_input):
         exit()
 
 
-def validation_coordinate(USED_COORDINATES, COORDINATES):
+def validation_coordinate(used_coordinates, coordinates):
     while 1:
         user_input = (input("Get your coordinate: ")).upper()
         quit_game(user_input)
-        if user_input in COORDINATES and user_input not in USED_COORDINATES:
-            USED_COORDINATES.append(user_input)
-            COORDINATES.remove(user_input)
+        if user_input in coordinates and user_input not in used_coordinates:
+            used_coordinates.append(user_input)
+            coordinates.remove(user_input)
             return user_input
         else:
             print("It's not valid coordinate, please try again")
 
 
-def get_move(USED_COORDINATES, COORDINATES):
-    user_input = validation_coordinate(USED_COORDINATES, COORDINATES)
-    row = int(COORDINATES_DICT[user_input[0]])
+def get_move(used_coordinates, coordinates):
+    user_input = validation_coordinate(used_coordinates, coordinates)
+    row = int(coordinates_dict[user_input[0]])
     col = int(user_input[1])
     return row, col-1
 
 
-def get_ai_move(COORDINATES):
-    bot_move = random.choice(COORDINATES)
-    COORDINATES.remove(bot_move)
-    row = int(COORDINATES_DICT[bot_move[0]])
+def get_ai_move(coordinates):
+    bot_move = random.choice(coordinates)
+    coordinates.remove(bot_move)
+    row = int(coordinates_dict[bot_move[0]])
     col = int(bot_move[1])
     return row, col-1
-
-
-get_ai_move(COORDINATES)
-
-current_player = "x"
 
 
 def change_player(player):
     if player == "x":
         player = "o"
+        return player
     if player == "o":
         player = "x"
-    return player
+        return player
 
 
 def mark(board, player, row, col):
@@ -119,18 +115,18 @@ def print_result(board, player):
     has_won(board, player)
 
 
-def tictactoe_game(board, player):
-    current_player
+def tictactoe_game(board, player, used_coordinates, coordinates):
     while True:
         print_board(board)
-        row, col = get_move(USED_COORDINATES, COORDINATES)
-        mark(board, player, row, col)
-        if has_won == True:
-            break
+        col, row = get_move(used_coordinates, coordinates)
+        print(str(col), ' ', str(row))
+        board = mark(board, player, row, col)
+        if has_won(board, player) == True:
+            return has_won()
         elif is_full(board) == True:
             break
-        change_player(player)
-    print(has_won(board, player))
+        player = change_player(player)
+    print(print_result(board, player))
 
 
 def menu_valiadation():
@@ -159,4 +155,6 @@ def main_menu():
 if __name__ == '__main__':
     game_mode = main_menu()
     board = init_board()
-    tictactoe_game(board, player)
+    used_coordinates = []
+    coordinates = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
+    tictactoe_game(board, player, used_coordinates, coordinates)
