@@ -154,6 +154,25 @@ def tictactoe_game_vs_computer(board, player, random, used_coordinates, coordina
         print_board(board)
 
 
+def tictactoe_game_just_look(board, player, random, used_coordinates, coordinates):
+    print_board(board)
+    while True:
+        col, row = get_ai_move(coordinates)
+        print(str(col), ' ', str(row))
+        board = mark(board, player, row, col)
+        board_full = is_full(board)
+        if has_won(board, player) == True:
+            print_board(board)
+            print(f"Won Player: ", player)
+            break
+        elif board_full == True:
+            print_board(board)
+            print("It`s a Tie!")
+            break
+        player = change_player(player)
+        print_board(board)
+
+
 def menu_valiadation():
     while 1:
         user_input = input()
@@ -171,6 +190,10 @@ def options(game_mode):
         tictactoe_game(board, player, used_coordinates, coordinates)
     if game_mode == 2:
         tictactoe_game_vs_computer(
+            board, player, random, used_coordinates, coordinates)
+
+    if game_mode == 3:
+        tictactoe_game_just_look(
             board, player, random, used_coordinates, coordinates)
 
 
